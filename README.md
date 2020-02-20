@@ -1,4 +1,4 @@
-# esp32 flutter joystick socketio
+# esp32 flutter joystick socket io
 
 A new Flutter project.
 

@@ -81,11 +81,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_web_plugins:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   image:
     dependency: transitive
     description:
@@ -153,7 +148,7 @@ packages:
       name: socket_io_client
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.7+2"
+    version: "0.9.8"
   socket_io_common:
     dependency: transitive
     description:
@@ -217,27 +212,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.8"
-  video_player:
+  webview_flutter:
     dependency: "direct main"
     description:
-      name: video_player
+      name: webview_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.10.7"
-  video_player_platform_interface:
-    dependency: transitive
-    description:
-      name: video_player_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
-  video_player_web:
-    dependency: transitive
-    description:
-      name: video_player_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.2"
+    version: "0.3.19+8"
   xml:
     dependency: transitive
     description:
@@ -247,4 +228,4 @@ packages:
     version: "3.5.0"
 sdks:
   dart: ">=2.4.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.4 <2.0.0"
+  flutter: ">=1.12.13+hotfix.5"

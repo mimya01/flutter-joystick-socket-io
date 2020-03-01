@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:control_pad/control_pad.dart';
 import 'package:flutter/services.dart';
-import 'package:video_player/video_player.dart';
+// import 'package:video_player/video_player.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 void main() => runApp(MyApp());
@@ -32,30 +33,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  VideoPlayerController _video_controller;
+//  VideoPlayerController _video_controller;
   String old_direction = "S";
-  IO.Socket socket = IO.io('http://192.168.1.7:4000', <String, dynamic>{
+  IO.Socket socket = IO.io('http://64.225.99.23:80', <String, dynamic>{
     'transports': ['websocket'],
     //  'extraHeaders': {'foo': 'bar'} // optional
   });
   @override
   void initState() {
     super.initState();
-    _video_controller = VideoPlayerController.network(
-        'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4')
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        // setState(() {});
-        _video_controller.play();
-      });
+    // web view
   }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _video_controller.dispose();
-  }
-
   String getDirection(double degrees, double distance) {
     if (distance != 0.00) {
       if ((degrees >= 0 && degrees < 30) || (degrees >= 330 && degrees <= 360))
@@ -75,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     JoystickDirectionCallback onDirectionChangedMovement(
-      double degrees, double distance) {
+        double degrees, double distance) {
       String direction = getDirection(degrees, distance);
       print(direction);
       if (old_direction != direction) {
@@ -98,7 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
             child:
                 /* _video_controller.value.initialized
               ?  */
-                VideoPlayer(_video_controller)
+                WebView(
+          initialUrl: "http://192.168.1.6/",
+          javascriptMode: JavascriptMode.unrestricted,
+        )
             /* : Container(
                   child: Text('Loading ..'),
                 ), */
@@ -115,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 innerCircleColor: Colors.black12,
                 backgroundColor: Colors.black26,
                 opacity: 0.8,
-                size: 150.0,
+                size: 250.0,
                 onDirectionChanged: onDirectionChangedMovement,
               ),
               /*  JoystickView(

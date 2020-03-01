@@ -1,4 +1,4 @@
-# arduino_remote_controle
+# esp32 flutter joystick socket io
 
 A new Flutter project.
 
